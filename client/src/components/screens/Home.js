@@ -20,7 +20,7 @@ const Home = () => {
             .catch(err => {
                 console.log(err);
             })
-    }, []);
+    }, [data]);
 
 
     const likePost = (id) => {
@@ -155,15 +155,15 @@ const Home = () => {
                                 <img src={item.photo} alt="post" />
                             </div>
                             <div className="card-content">
-                                <i className="material-icons">favorite</i>
                                 {
                                     item.likes.includes(state._id)
                                         ?
-                                        <i className="material-icons" onClick={() => { unlikePost(item._id) }}>thumb_down</i>
+                                        <i className="material-icons" onClick={() => { unlikePost(item._id) }}>favorite</i>
                                         :
-                                        <i className="material-icons" onClick={() => { likePost(item._id) }}>thumb_up</i>
+                                        <i className="material-icons" onClick={() => { likePost(item._id) }}>favorite_border</i>
 
                                 }
+                                <a style={{ marginInlineStart: "10px" }} className="material-icons" href={'#comment' + item._id}>comment</a>
 
                                 <h6>{item.likes.length} likes</h6>
                                 <h6>{item.title}</h6>
@@ -179,7 +179,7 @@ const Home = () => {
                                     e.preventDefault();
                                     makeComment(e.target[0].value, item._id)
                                 }}>
-                                    <input type="text" placeholder="Add a Comment" />
+                                    <input id={'comment' + item._id} type="text" placeholder="Add a Comment" />
                                 </form>
                             </div>
                         </div>

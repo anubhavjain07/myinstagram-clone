@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect, useState } from 'react';
 import '../App.css';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Switch } from 'react-router-dom';
 import { UserContext } from '../App';
 import M from 'materialize-css';
 
@@ -18,26 +18,26 @@ const NavBar = () => {
     const renderList = () => {
         if (state) {
             return [
-                <li key="1"><i data-target="modal1" className="material-icons modal-trigger" style={{ color: "black" }}>search</i></li>,
-                <li key="2"><Link to="/profile">Profile</Link></li>,
-                <li key="3"><Link to="/create">Create Post</Link></li>,
-                <li key="4"><Link to="/myfollowingpost">My Following Post</Link></li>,
-                <li key="5">
-                    <button style={{ marginRight: "8px" }} className="btn btn-small #c62828 red darken-3" onClick={() => {
+                <li key="1"><Link to="/" className="sidenav-close" ><i data-target="modal1" className="material-icons modal-trigger" style={{ color: "black" }}>search</i></Link></li>,
+                <li className="sidenav-close" key="2"><Link to="/profile">Profile</Link></li>,
+                <li className="sidenav-close" key="3"><Link to="/create">Create Post</Link></li>,
+                <li className="sidenav-close" key="4"><Link to="/myfollowingpost">My Following Post</Link></li>,
+                <li className="sidenav-close" key="5">
+                    <Link to="/signin" onClick={() => {
                         localStorage.clear();
                         dispatch({ type: 'CLEAR' });
-                        history.push('/signin');
+                        //history.push('/signin');
 
                     }}>
                         Logout
-                    </button>
+                    </Link>
                 </li>
             ]
         }
         else {
             return [
-                <li key="6"><Link to="/signin">Signin</Link></li>,
-                <li key="7"><Link to="/signup">SignUp</Link></li>
+                <li className="sidenav-close" key="6"><Link to="/signin">Signin</Link></li>,
+                <li className="sidenav-close" key="7"><Link to="/signup">SignUp</Link></li>
             ]
         }
     }
@@ -68,9 +68,19 @@ const NavBar = () => {
         <nav>
             <div className="nav-wrapper white">
                 <Link style={{ marginLeft: "8px" }} to={state ? '/' : 'signin'} className="brand-logo left">Instagram</Link>
-                <ul id="nav-mobile" className="right">
+                <a href="#" data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
+                <ul id="nav-mobile" className="right  hide-on-med-and-down">
                     {renderList()}
                 </ul>
+                <ul className="sidenav" id="mobile-demo">
+                    {renderList()}
+                </ul>
+
+                {document.addEventListener('DOMContentLoaded', function () {
+                    var elems = document.querySelectorAll('.sidenav');
+                    var instances = M.Sidenav.init(elems);
+                })}
+
             </div>
             <div id="modal1" className="modal" ref={searchModal} style={{ color: 'black' }}>
                 <div className="modal-content">
@@ -102,6 +112,8 @@ const NavBar = () => {
                 </div>
             </div>
         </nav>
+
+
     );
 };
 

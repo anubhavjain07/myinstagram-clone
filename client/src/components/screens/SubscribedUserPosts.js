@@ -20,7 +20,7 @@ const Home = () => {
             .catch(err => {
                 console.log(err);
             })
-    }, []);
+    }, [data]);
 
 
     const likePost = (id) => {
@@ -145,7 +145,7 @@ const Home = () => {
                         <div className="card home-card" key={item._id}>
                             <h5 style={{ padding: "8px" }}>
                                 <Link to={item.postedBy._id !== state._id ? '/profile/' + item.postedBy._id : '/profile/'}>
-                                    {item.postedBy.name}
+                                    <span><img style={{ width: "24px", height: "24px", borderRadius: "12px" }} src={item.postedBy.pic} alt="profile" /></span>  {item.postedBy.name}
                                 </Link>
                                 {item.postedBy._id === state._id && <i className="material-icons" style={{ float: 'right' }}
                                     onClick={() => deletePost(item._id)}
@@ -155,15 +155,15 @@ const Home = () => {
                                 <img src={item.photo} alt="post" />
                             </div>
                             <div className="card-content">
-                                <i className="material-icons">favorite</i>
                                 {
                                     item.likes.includes(state._id)
                                         ?
-                                        <i className="material-icons" onClick={() => { unlikePost(item._id) }}>thumb_down</i>
+                                        <i className="material-icons" onClick={() => { unlikePost(item._id) }}>favorite</i>
                                         :
-                                        <i className="material-icons" onClick={() => { likePost(item._id) }}>thumb_up</i>
+                                        <i className="material-icons" onClick={() => { likePost(item._id) }}>favorite_border</i>
 
                                 }
+                                <a style={{ marginInlineStart: "10px" }} className="material-icons" href={'#comment' + item._id}>comment</a>
 
                                 <h6>{item.likes.length} likes</h6>
                                 <h6>{item.title}</h6>
@@ -179,7 +179,7 @@ const Home = () => {
                                     e.preventDefault();
                                     makeComment(e.target[0].value, item._id)
                                 }}>
-                                    <input type="text" placeholder="Add a Comment" />
+                                    <input id={'comment' + item._id} type="text" placeholder="Add a Comment" />
                                 </form>
                             </div>
                         </div>

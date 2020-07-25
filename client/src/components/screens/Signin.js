@@ -26,7 +26,7 @@ const Signin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 if (data.error) {
 
                     M.toast({ html: data.error, classes: '#c62828 red darken-3' })
