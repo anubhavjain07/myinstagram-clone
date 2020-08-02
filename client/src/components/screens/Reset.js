@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import M from 'materialize-css';
+import { Container } from 'react-materialize';
 
 const ResetPassword = () => {
     const history = useHistory();
@@ -38,20 +39,22 @@ const ResetPassword = () => {
             });
     };
     return (
-        <div className="mycard">
-            <div className="card auth-card input-field">
-                <h2>Instagram</h2>
-                <input
-                    type="text"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <button className="btn waves-effect waves-light #64b5f6 blue darken-1" onClick={() => PostData()}>
-                    Reset Password
+        <Container>
+            <div className="mycard">
+                <div className="card auth-card input-field">
+                    <h2>Instagram</h2>
+                    <input
+                        type="text"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <button className="btn waves-effect waves-light #64b5f6 blue darken-1" onClick={() => PostData()}>
+                        Reset Password
                     </button>
+                </div>
             </div>
-        </div>
+        </Container>
     );
 }
 

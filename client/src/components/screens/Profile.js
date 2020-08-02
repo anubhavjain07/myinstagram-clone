@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../../App';
+import { Container, Row, Col } from 'react-materialize';
 
 const Profile = () => {
     const [mypics, setPics] = useState([]);
@@ -63,6 +64,40 @@ const Profile = () => {
             </div>
 
         </div>
+        // <Container>
+        //     <Row>
+        //         <Col s={10} m={4}>
+        //             <img style={{ width: "140px", height: "140px", borderRadius: "70px" }} src={state ? state.pic : ''} alt="profile" />
+        //         </Col>
+        //         <Col s={10} m={8}>
+        //             <h4>{state ? state.name : 'Loading..'}</h4>
+        //             <h5>{state ? state.email : 'Loading..'}</h5>
+        //             <div style={{
+        //                 display: "flex",
+        //                 width: '108%',
+        //                 justifyContent: 'space-between'
+        //             }}>
+        //                 <h6>{mypics.length} Posts</h6>
+        //                 <h6>{state ? state.followers.length : '0'} Followers</h6>
+        //                 <h6>{state ? state.following.length : '0'} Following</h6>
+        //             </div>
+        //         </Col>
+        //     </Row>
+        //     <Row >
+        //         {
+        //             mypics.map(item => {
+        //                 return (
+        //                     <Col s={12} m={4}>
+        //                         <div>
+        //                             <img key={item._id} className="item" src={item.photo} alt={item.title} />
+        //                         </div>
+        //                     </Col>
+        //                 );
+
+        //             })
+        //         }
+        //     </Row>
+        // </Container>
     );
 }
 

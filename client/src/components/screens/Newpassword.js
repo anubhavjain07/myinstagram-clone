@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import M from 'materialize-css';
+import { Container } from 'react-materialize';
 
 const NewPassword = () => {
     const history = useHistory();
@@ -38,21 +39,23 @@ const NewPassword = () => {
             });
     };
     return (
-        <div className="mycard">
-            <div className="card auth-card input-field">
-                <h2>Instagram</h2>
+        <Container>
+            <div className="mycard">
+                <div className="card auth-card input-field">
+                    <h2>Instagram</h2>
 
-                <input
-                    type="password"
-                    placeholder="Enter New Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="btn waves-effect waves-light #64b5f6 blue darken-1" onClick={() => PostData()}>
-                    Change Password
+                    <input
+                        type="password"
+                        placeholder="Enter New Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button className="btn waves-effect waves-light #64b5f6 blue darken-1" onClick={() => PostData()}>
+                        Change Password
                     </button>
+                </div>
             </div>
-        </div>
+        </Container>
     );
 }
 
