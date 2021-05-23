@@ -66,8 +66,8 @@ const NavBar = () => {
 
     return (
         <nav>
-            <div className="nav-wrapper white">
-                <Link style={{ marginLeft: "8px" }} to={state ? '/' : 'signin'} className="brand-logo left">Instagram</Link>
+            <div className="nav-wrapper">
+                <Link style={{ marginLeft: "8px" }} to={state ? '/' : 'signin'} className="brand-logo left">Picster</Link>
                 <a href="#" data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
                 <ul id="nav-mobile" className="right  hide-on-med-and-down">
                     {renderList()}
